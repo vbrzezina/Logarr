@@ -7,6 +7,7 @@ import { PlexProvider, PlexClient } from '@logarr/provider-plex';
 import { ProwlarrProvider } from '@logarr/provider-prowlarr';
 import { RadarrProvider } from '@logarr/provider-radarr';
 import { SeerrProvider } from '@logarr/provider-seerr';
+import { ReadarrProvider } from '@logarr/provider-readarr';
 import { SonarrProvider } from '@logarr/provider-sonarr';
 import { WhisparrProvider } from '@logarr/provider-whisparr';
 import { Injectable, Inject, Logger, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
@@ -91,6 +92,9 @@ export class IngestionService implements OnModuleInit, OnModuleDestroy {
     this.providers.set(lidarrProvider.id, lidarrProvider);
     const seerrProvider = new SeerrProvider();
     this.providers.set(seerrProvider.id, seerrProvider);
+
+    const readarrProvider = new ReadarrProvider();
+    this.providers.set(readarrProvider.id, readarrProvider);
   }
 
   async onModuleInit() {

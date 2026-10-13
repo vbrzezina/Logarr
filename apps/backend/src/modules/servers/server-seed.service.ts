@@ -84,6 +84,13 @@ const ENV_SERVER_CONFIGS: EnvServerConfig[] = [
     name: 'Seerr',
     containerLogPath: '/seerr-logs',
   },
+  {
+    urlEnvKey: 'READARR_URL',
+    apiKeyEnvKey: 'READARR_API_KEY',
+    providerId: 'readarr',
+    name: 'Readarr',
+    containerLogPath: '/readarr-logs',
+  },
 ];
 
 @Injectable()
@@ -96,7 +103,9 @@ export class ServerSeedService implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    this.logger.log('ServerSeedService initializing - checking for servers to seed from environment...');
+    this.logger.log(
+      'ServerSeedService initializing - checking for servers to seed from environment...'
+    );
     try {
       await this.seedServersFromEnv();
     } catch (error) {
